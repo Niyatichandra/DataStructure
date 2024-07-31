@@ -11,9 +11,7 @@ class Stack {
         }
         else {
             a[++top] = x;
-
-
-        }
+         }
     }
 
     int pop()
@@ -61,10 +59,6 @@ class Main {
              b[i]=sc.nextInt();
             s.push(b[i]);
         }
-
-
-
-
         System.out.println(s.pop() + " Popped from stack");
         System.out.println("Top element is :" + s.peek());
         System.out.print("Elements present in stack :");
