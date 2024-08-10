@@ -39,7 +39,7 @@ public class parenthesis {
     {
         String expr = "([{}])";
 
-        // Function call
+       
         if (balance(expr))
             System.out.println("Balanced ");
         else

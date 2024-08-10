@@ -20,7 +20,5 @@ public class hanoi {
         hanoi(n - 1, t3, t2, t1);
     }
 
-    public void main() {
 
-    }
 }
