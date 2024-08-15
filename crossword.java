@@ -1,40 +1,33 @@
 import java.util.Scanner;
 public class crossword {
-    public static void solution(char[][] arr,String[] words,int vidx)
-    {
-        if(vidx==words.length)
-        {
+    public static void solution(char[][] arr,String[] words,int vidx) {
+        if (vidx == words.length) {
             print(arr);
             return;
         }
-        String word=words[vidx];
-        for(int i=0;i<arr.length;i++)
-        {
-            for(int j=0;j<arr.length;j++)
-            {
-              if(arr[i][j]=='_'||arr[i][j]==word.charAt(0))
-              {
-                  if(placehori(arr,word,i,j))
-                  {
-                      boolean[] weplace=placewordhori(arr,word,i,j);
-                      solution(arr,words,vidx+1);
-                      unplacehor(arr,word,i,j);
+        String word = words[vidx];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[i][j] == '_' || arr[i][j] == word.charAt(0)) {
+                    if (placehori(arr, word, i, j)) {
+                        boolean[] weplaced = placewordhori(arr, word, i, j);
+                        solution(arr, words, vidx + 1);
+                        unplacewordhori(arr, weplaced, i, j);
 
-                  }
-                  if(placevert(arr,word,i,j))
-                  {
-                      boolean[] weplaced=placevert(arr,word,i,j);
-                      solution(arr,words,vidx+1);
-                      unplacewrdvert(arr,word,i,j);
-                  }
-              }
+                    }
+                    if (placevert(arr, word, i, j)) {
+                        boolean[] weplaced = placewordvert(arr, word, i, j);
+                        solution(arr, words, vidx + 1);
+                        unplacewordvert(arr,weplaced , i, j);
+                    }
+                }
             }
         }
     }
-    public static boolean placevert(char[][] arr,String word,int i,int j) {
+    public static boolean placehori(char[][] arr,String word,int i,int j) {
         if (j - 1 >= 0 && arr[i][j] != '+') {
             return false;
-        } else if (j + word.length() < arr[0].length && arr[i][j + word.length() != '+']) {
+        } else if (j + word.length() < arr[0].length && arr[i][j + word.length()] != '+') {
             return false;
         }
         for (int jj = 0; jj < word.length(); jj++) {
@@ -48,14 +41,14 @@ public class crossword {
             }
             return true;
         }
-    }
-        public static boolean placehori(char[][] arr,String word,int i,int j)
+
+        public static boolean placevert(char[][] arr,String word,int i,int j)
         {
             if(i-1>=0 && arr[i][j]!='+')
             {
                 return false;
             }
-            else if(i+word.length()<arr[0].length && arr[i+word.length()!='+'][j])
+            else if((i+word.length()<arr[0].length) && (arr[i+word.length()][j]!='+'))
             {
                 return false;
             }
@@ -72,7 +65,7 @@ public class crossword {
                 }
                 return true;
             }
-    }
+
     public static boolean[] placewordhori(char[][] arr,String word,int i,int j)
     {
         boolean[] weplaced= new boolean[word.length()];
@@ -86,6 +79,7 @@ public class crossword {
         }
         return weplaced;
     }
+
     public static boolean[] placewordvert(char[][] arr,String word,int i,int j)
     {
         boolean[] weplaced= new boolean[word.length()];
@@ -100,9 +94,20 @@ public class crossword {
         return weplaced;
     }
 
-    public static voidunplacevertr(char[][] arr,boolean[] weplaced,int i,int j)
+
+    public static void unplacewordhori(char[][] arr,boolean[] weplaced,int i,int j)
     {
-        for(int ii=0;ii<weplaced.length();ii++)
+        for(int jj=0;j<arr.length;jj++)
+        {
+            if(weplaced[jj]==true)
+            {
+                arr[i][j+jj]='_';
+            }
+        }
+    }
+    public static void unplacewordvert(char[][] arr,boolean[] weplaced,int i,int j)
+    {
+        for(int ii=0;i<arr.length;ii++)
         {
             if(weplaced[ii]==true)
             {
@@ -110,7 +115,7 @@ public class crossword {
             }
         }
     }
-    public static voi print(char[][] arr)
+    public static void print(char[][] arr)
     {
         for(int i=0;i<arr.length;i++)
         {
@@ -129,16 +134,17 @@ public class crossword {
             String str=sc.next();
         arr[i]=str.toCharArray();
 
+
     }
         int n=sc.nextInt();
         String[] words=new String[n];
-        for(int i=0i<words.length();i++)
+        for(int i=0;i<n;i++)
 
         {
-            words[i=sc.next();
+            words[i]=sc.next();
         }
-        solution(arr,words,i);
+        solution(arr,words,0);
 
 
 }
-}-
+}
