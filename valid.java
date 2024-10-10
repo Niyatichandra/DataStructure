@@ -7,26 +7,31 @@ public class valid {
         Stack<Character> st=new Stack<>();
         Stack<Character> at=new Stack<>();
         char r;
-        if(s.charAt(0)=='(')
-            st.push(s.charAt(0));
-        else {
-            for (int i = 1; i < s.length(); i++) {
-
+        if(s.charAt(0)=='(') {
+            for (int i = 0; i < s.length(); i++) {
                 char ch = s.charAt(i);
                 st.push(ch);
             }
         }
-        if(st.size()==0)
-        {
-            System.out.println(st.size());
+        else {
+            for (int i = 1; i < s.length(); i++) {
+                char ch = s.charAt(i);
+                st.push(ch);
+            }
+
         }
+
+            if(st.size()==0)
+            {
+            System.out.println(st.size());
+            }
         else {
 
             while(st.size()!=0)
             {
                 char q=st.pop();
-                if(st.size()==0)
-                  return;
+              // if(st.size()==0)
+                // return;
                 if(q==')')
                 {
 
