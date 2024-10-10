@@ -7,10 +7,14 @@ public class valid {
         Stack<Character> st=new Stack<>();
         Stack<Character> at=new Stack<>();
         char r;
-        for(int i=0;i<s.length();i++)
-        {
-            char ch=s.charAt(i);
-            st.push(ch);
+        if(s.charAt(0)=='(')
+            st.push(s.charAt(0));
+        else {
+            for (int i = 1; i < s.length(); i++) {
+
+                char ch = s.charAt(i);
+                st.push(ch);
+            }
         }
         if(st.size()==0)
         {
@@ -21,8 +25,11 @@ public class valid {
             while(st.size()!=0)
             {
                 char q=st.pop();
+                if(st.size()==0)
+                  return;
                 if(q==')')
                 {
+
                     if(st.peek()=='(')
                     {
                       r=st.pop();
