@@ -7,11 +7,8 @@ public class keypad {
         String str = sc.next();
         ArrayList<String> words = getkpc(str);
         System.out.println(words);
-
     }
-
     static String[] codes = {",", "abc", "def", "ghi", "jkl", "mnop", "qrs", "tuv", "wx", "yz"};
-
     public static ArrayList<String> getkpc(String str) {
         if (str.length() == 0) {
             ArrayList<String> bres = new ArrayList<>();
@@ -28,7 +25,6 @@ public class keypad {
             for (String rstr : rres) {
                 mres.add(chcode + rstr);
             }
-
         }
         return mres;
     }
